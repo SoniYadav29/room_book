@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal: #142c35;
+  --color-gold: #d5b477;
+  --color-ivory: #f5f0e6;
+  --color-copper: #a95f35;
+  --color-royal: #253f82;
+  --color-sand: #ede6d9;
+  --color-ink: #292a27;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), Arial, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+body {
+  margin: 0;
+  background: #f5f0e6;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+::selection {
+  background: #d5b477;
+  color: #142c35;
+}
+.hero-reveal {
+  animation: revealUp 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-progress {
+  animation: progress 6.5s linear both;
+}
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.field-label {
+  display: block;
+  color: #142c35;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.field-input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid rgba(20, 44, 53, 0.16);
+  background: #faf8f3;
+  padding: 14px 13px;
+  color: #142c35;
+  font-size: 13px;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.field-input:focus {
+  border-color: #a9854d;
+  box-shadow: 0 0 0 3px rgba(213, 180, 119, 0.15);
+}
+.field-input::placeholder {
+  color: rgba(41, 42, 39, 0.35);
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+
+.hero-zoom {
+  animation: heroZoom 12s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom {
+    animation: none;
+  }
+}
+/* gallery preview section css */
+
+.gallery-card {
+  isolation: isolate;
+  animation: galleryReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-radius: 2px;
+}
+
+.gallery-image {
+  transition:
+    transform 1.2s cubic-bezier(0.2, 0.65, 0.3, 1),
+    filter 0.8s ease;
+  will-change: transform;
+}
+
+.gallery-card:hover .gallery-image {
+  transform: scale(1.09);
+  filter: saturate(1.12);
+}
+
+.gallery-heading {
+  animation: headingReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.gallery-view-link {
+  animation: headingReveal 1s 0.2s both;
+}
+
+@keyframes galleryReveal {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+    clip-path: inset(12% 0 0 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes headingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-card-1 {
+    min-height: 650px;
+  }
+
+  .gallery-card-2,
+  .gallery-card-3 {
+    min-height: 317px;
+  }
+
+  .gallery-card-4,
+  .gallery-card-5,
+  .gallery-card-6,
+  .gallery-card-7 {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery-card-1 {
+    min-height: 280px;
+  }
+
+  .gallery-card {
+    min-height: 210px;
+  }
+
+  .gallery-card-1 {
+    min-height: 280px;
+  }
+
+  .gallery-card .absolute.inset-x-0.bottom-0 > div {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gallery-card .absolute.inset-3 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-card,
+  .gallery-heading,
+  .gallery-view-link {
+    animation: none;
+  }
+
+  .gallery-image,
+  .gallery-card * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes montaraHeroZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.15);
+  }
+}
+
+.hero-zoom {
+  animation: montaraHeroZoom 4s ease-out forwards;
+}
